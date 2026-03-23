@@ -1,11 +1,10 @@
 import dotenv from "dotenv"
 dotenv.config();
+import express from "express";
+import mongoose from "mongoose"
+import cors from "cors";
 
-const express =require("express");
-const mongoose = require("mongoose")
-const cors = require("cors");
-
-const leaveRoutes=require("./routes/leaveRoutes.js")
+import leaveRoutes from "./routes/leaveRoutes.js";
 
 dotenv.config();
 
