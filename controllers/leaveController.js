@@ -55,3 +55,4 @@ await Leave.findByIdAndDelete(req.params.id);
     res.status(500).json({ error: error.message });
   }
 };
+
