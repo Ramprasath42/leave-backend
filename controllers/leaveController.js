@@ -1,7 +1,7 @@
-const Leave = require("../models/Leave");
+import Leave from "../models/Leave.js";
  
 
-exports.createLeave = async (req, res) => {
+export const createLeave = async (req, res) => {
   try {
     const leave = new Leave(req.body);
 await leave.save();
@@ -12,7 +12,7 @@ await leave.save();
 };
  
 
-exports.getLeaves = async (req, res) => {
+export const getLeaves = async (req, res) => {
   try {
     const leaves = await Leave.find();
     res.json(leaves);
@@ -22,7 +22,7 @@ exports.getLeaves = async (req, res) => {
 };
 
 
-exports.getLeaveById = async (req, res) => {
+export const getLeaveById = async (req, res) => {
   try {
 const leave = await Leave.findById(req.params.id);
     if (!leave) return res.status(404).json({ message: "Not found" });
@@ -33,7 +33,7 @@ const leave = await Leave.findById(req.params.id);
 };
  
 
-exports.updateLeave = async (req, res) => {
+export const updateLeave = async (req, res) => {
   try {
     const leave = await Leave.findByIdAndUpdate(
 req.params.id,
@@ -47,7 +47,7 @@ req.params.id,
 };
  
 
-exports.deleteLeave = async (req, res) => {
+export const deleteLeave = async (req, res) => {
   try {
 await Leave.findByIdAndDelete(req.params.id);
     res.json({ message: "Deleted successfully" });

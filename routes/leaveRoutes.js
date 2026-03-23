@@ -1,13 +1,13 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
  
-const {
+import {
   createLeave,
   getLeaves,
   getLeaveById,
   updateLeave,
   deleteLeave
-} = require("../controllers/leaveController");
+} from "../controllers/leaveController.js";
  
 
 router.post("/", createLeave);
@@ -23,4 +23,4 @@ router.put("/:id", updateLeave);
 
 router.delete("/:id", deleteLeave);
  
-module.exports = router;
+export default router;
