@@ -6,7 +6,7 @@ export const createLeave = async (req, res) => {
   try {
     const leave = new Leave(req.body);
 await leave.save();
-    cache.clear()
+    Object.keys(cache).forEach(key=>delete cache[key]);
     res.status(201).json(leave);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -82,7 +82,7 @@ req.params.id,
       req.body,
       { returnDocument: "after" }
     );
-    cache.clear();
+    Object.keys(cache).forEach(key=>delete cache[key]);;
     res.json(leave);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -93,7 +93,7 @@ req.params.id,
 export const deleteLeave = async (req, res) => {
   try {
 await Leave.findByIdAndDelete(req.params.id);
-cache.clear();
+Object.keys(cache).forEach(key=>delete cache[key]);;
     res.json({ message: "Deleted successfully" });
   } catch (error) {
     res.status(500).json({ error: error.message });
